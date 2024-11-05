@@ -6,12 +6,13 @@ import com.demo.pages.Pages;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Owner;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.util.List;
 
 @Epic("Test Epic")
-@Feature("Test feature")
+@Feature("Test searching")
 @Owner("QA Bohomazov Dmytro")
 public class FirstTest extends BaseTest {
 
@@ -25,6 +26,12 @@ public class FirstTest extends BaseTest {
 
         Pages.searchPage().waitForElements();
         List<SelenideElement> elements = Pages.searchPage().getFoundElements();
-        Pages.searchPage().checkForSearchWord(searchWord, elements);
+
+        for (SelenideElement element : elements) {
+            Assert.assertTrue(
+                    element.getText().contains(searchWord),
+                    "Text does not contain '%s': %s".formatted(searchWord, element.getText())
+            );
+        }
     }
 }

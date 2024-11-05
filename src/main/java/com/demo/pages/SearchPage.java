@@ -8,19 +8,10 @@ import java.util.List;
 
 public class SearchPage extends PageTools {
 
-    private final By foundElements = By.xpath("//div[@class=\"MjjYud\"]");
+    private final By foundElements = By.xpath("//div[@class=\"MjjYud\"]//div[@class=\"N54PNb BToiNc\"]//h3[@class=\"LC20lb MBeuO DKV0Md\"]");
 
     public List<SelenideElement> getFoundElements() {
         return getElements(foundElements);
-    }
-
-    public boolean checkForSearchWord(String searchWord, List<SelenideElement> elements) {
-        boolean check = true;
-        for (SelenideElement element : elements) {
-        shouldMatchText(searchWord, foundElements);
-        }
-
-        return check;
     }
 
     public void waitForElements() {
