@@ -1,7 +1,7 @@
 package com.demo;
 
-import com.codeborne.selenide.SelenideElement;
 import com.demo.core.base.BaseTest;
+import com.demo.data.Book;
 import com.demo.pages.Pages;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
@@ -18,20 +18,18 @@ public class FirstTest extends BaseTest {
 
     @Test(description = "FirstTest")
     public void firstTest() {
-        String searchWord = System.getProperty("myArg", "default_value");
-        logInfo("searchWord is " + searchWord);
-
         Pages.homePage().waitForSearchForm();
-        Pages.homePage().search(searchWord);
+        Pages.homePage().chooseFilter("Books");
+        Pages.homePage().search("Java");
 
         Pages.searchPage().waitForElements();
-        List<SelenideElement> elements = Pages.searchPage().getFoundElements();
+        List<Book> books = Pages.searchPage().saveBooks();
 
-        for (SelenideElement element : elements) {
-            Assert.assertTrue(
-                    element.getText().contains(searchWord),
-                    "Text does not contain '%s': %s".formatted(searchWord, element.getText())
-            );
-        }
+        Pages.testBookPage().open();
+        Pages.testBookPage().waitForElements();
+        Book findBook = Pages.testBookPage().getBook();
+
+        Assert.assertFalse(books.isEmpty(), "List with books is empty");
+        Assert.assertTrue(books.stream().anyMatch((book -> book.equals(findBook))), "Book not found in the list");
     }
 }
