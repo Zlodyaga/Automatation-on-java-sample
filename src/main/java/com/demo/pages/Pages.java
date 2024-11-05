@@ -1,6 +1,8 @@
 package com.demo.pages;
 
 import com.demo.core.allure.AllureLogger;
+import com.demo.pages.samplePages.LoginPage;
+import com.demo.pages.samplePages.NavigationPage;
 
 public class Pages extends AllureLogger {
     /**
@@ -10,6 +12,7 @@ public class Pages extends AllureLogger {
     private static NavigationPage navigationPage;
     private static HomePage homePage;
     private static SearchPage searchPage;
+    private static TestBookPage testBookPage;
 
     /**
      * This function return an instance of `NavigationPage`
@@ -40,5 +43,12 @@ public class Pages extends AllureLogger {
             searchPage = new SearchPage();
         }
         return searchPage;
+    }
+
+    public static TestBookPage testBookPage() {
+        if (testBookPage == null) {
+            testBookPage = new TestBookPage();
+        }
+        return testBookPage;
     }
 }

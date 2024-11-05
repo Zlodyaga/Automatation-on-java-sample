@@ -19,7 +19,7 @@ public class BaseTest extends AllureLogger {
         SelenideConfig.createBrowserConfig(System.getProperty("selenide.browser", "firefox"));
         configLog(this.getClass().getSimpleName());
         logInfo("Open browser...");
-        Selenide.open(Constants.URL);
+        Selenide.open(Constants.URL_START);
     }
 
     @AfterMethod(alwaysRun = true, description = "Closing web browser...")

@@ -1,4 +1,4 @@
-package com.demo.pages;
+package com.demo.pages.samplePages;
 
 import com.demo.core.base.PageTools;
 import org.openqa.selenium.By;
