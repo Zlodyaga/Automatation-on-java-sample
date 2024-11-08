@@ -20,6 +20,7 @@ public class AccountPage extends PageTools {
     private final By endDateField = By.xpath("//input[@aria-label='end Date']");
     private final By startDateField = By.xpath("//input[@aria-label='Start Date']");
     private final By objectToScrollUp = By.xpath("//div[@data-field-id='accountid']//div[@class='flexbox flexbox-row-wrap flexbox-grow-1']");
+    private final By transferMoneyButton = By.xpath("//div[@data-container-id='quickactions']//a[@aria-label='Transfer Money']");
 
     public void waitForSearchButton() {
         waitForElementVisibility(advancedSearchButtonShow);
@@ -27,6 +28,10 @@ public class AccountPage extends PageTools {
 
     public void waitForSearchResults() {
         waitForElementVisibility(By.xpath(tableOfSearch));
+    }
+
+    public void clickTransferMoneyButton() {
+        click(transferMoneyButton);
     }
 
     public boolean isTableOfTransactionVisible() {

@@ -64,6 +64,12 @@ public class Generator {
         return String.valueOf(df.format(ran.nextFloat() * 100));
     }
 
+    public static String getRandomFormattedDecimalStringValueWithMax(String pattern, int max) {
+        Random ran = new Random();
+        DecimalFormat df = new DecimalFormat(pattern);
+        return String.valueOf(df.format(ran.nextFloat() * max));
+    }
+
     public static String getRandomIntMinMaxInclusiveStringValue(int min, int max ) {
         Random ran = new Random();
         return Integer.toString(ran.nextInt(max - min + 1) + min);
