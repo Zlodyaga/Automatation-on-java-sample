@@ -2,6 +2,7 @@ package com.demo.pages;
 
 import com.demo.actions.Actions;
 import com.demo.core.base.PageTools;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
 public class NavigationPage extends PageTools {
@@ -11,7 +12,7 @@ public class NavigationPage extends PageTools {
     private final By logoutButton = By.xpath("//a[@aria-label='Logout']");
     private final By logoutButtonOk = By.xpath("//button[@class='dialog-button-ok ui-button ui-corner-all ui-widget']");
 
-
+    @Step("Get header text for assertion")
     public String getHeaderText() {
         return getElementText(headerText);
     }

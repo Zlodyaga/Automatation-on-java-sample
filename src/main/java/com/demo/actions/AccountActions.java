@@ -19,12 +19,14 @@ public class AccountActions {
         Pages.accountPage().waitForSearchResults();
         if(Pages.accountPage().isTableOfTransactionVisible())
         {
-            double amount = Double.parseDouble(removeDollarSign(Pages.accountPage().getAmountField()));
-            double futureBalance = Double.parseDouble(removeDollarSign(Pages.accountPage().getFutureBalanceField()));
-            String type = Pages.accountPage().getTypeField();
+            Pages.accountPage().clickLastTransactionsDetailsButton();
+            String amount = removeDollarSign(Pages.accountPage().getAmountField());
+            String futureBalance = removeDollarSign(Pages.accountPage().getFutureBalanceField());
             String date = Pages.accountPage().getDateField();
             String category = Pages.accountPage().getCategoryField();
-            return new Transaction(amount, futureBalance, type, date, category);
+            String type = Pages.accountPage().getTypeField();
+            String note = Pages.accountPage().getNoteField();
+            return new Transaction(amount, futureBalance, type, date, category, note);
         } else return null;
     }
 

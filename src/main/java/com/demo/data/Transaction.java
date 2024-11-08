@@ -4,35 +4,42 @@ import java.util.Objects;
 
 public class Transaction {
 
-    private double amount;
-    private double futureBalance;
+    private String amount;
+    private String futureBalance;
     private String type;
     private String date;
     private String category;
+    private String note;
 
-    public Transaction(double amount, double futureBalance, String type, String date, String category) {
+    public Transaction(String amount, String type, String date, String category, String note) {
         this.amount = amount;
-        this.futureBalance = futureBalance;
         this.type = type;
         this.date = date;
         this.category = category;
+        this.note = note;
     }
+
+    public Transaction(String amount, String futureBalance, String type, String date, String category, String note) {
+        this(amount, type, date, category, note);
+        this.futureBalance = futureBalance;
+    }
+
 
     // Getters and Setters
 
-    public double getAmount() {
+    public String getAmount() {
         return amount;
     }
 
-    public void setAmount(double amount) {
+    public void setAmount(String amount) {
         this.amount = amount;
     }
 
-    public double getFutureBalance() {
+    public String getFutureBalance() {
         return futureBalance;
     }
 
-    public void setFutureBalance(double futureBalance) {
+    public void setFutureBalance(String futureBalance) {
         this.futureBalance = futureBalance;
     }
 
@@ -60,32 +67,41 @@ public class Transaction {
         this.category = category;
     }
 
+    public String getNote() {
+        return note;
+    }
+
+    public void setNote(String note) {
+        this.note = note;
+    }
+
     // Overrides
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Transaction that = (Transaction) o;
-        return Double.compare(that.amount, amount) == 0 &&
-                Double.compare(that.futureBalance, futureBalance) == 0 &&
+        return Objects.equals(that.amount.replace(",","."), amount.replace(",",".")) &&
                 Objects.equals(type, that.type) &&
                 Objects.equals(date, that.date) &&
+                Objects.equals(note, that.note) &&
                 Objects.equals(category, that.category);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(amount, futureBalance, type, date, category);
+        return Objects.hash(amount, type, date, category, note);
     }
 
     @Override
     public String toString() {
         return "Transaction{" +
                 "amount=" + amount +
-                ", futureBalance=" + futureBalance +
+                (futureBalance != null ? ", futureBalance=" + futureBalance : "") +
                 ", type='" + type + '\'' +
                 ", date='" + date + '\'' +
                 ", category='" + category + '\'' +
+                (note != null ? ", note=" + note : "") +
                 '}';
     }
 }

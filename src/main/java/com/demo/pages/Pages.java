@@ -10,6 +10,7 @@ public class Pages extends AllureLogger {
     private static NavigationPage navigationPage;
     private static HomePage homePage;
     private static AccountPage accountPage;
+    private static TransferMoneyPage transferMoneyPage;
 
     /**
      * This function return an instance of `NavigationPage`
@@ -40,5 +41,12 @@ public class Pages extends AllureLogger {
             accountPage = new AccountPage();
         }
         return accountPage;
+    }
+
+    public static TransferMoneyPage transferMoneyPage() {
+        if (transferMoneyPage == null) {
+            transferMoneyPage = new TransferMoneyPage();
+        }
+        return transferMoneyPage;
     }
 }
