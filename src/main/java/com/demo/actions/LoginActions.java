@@ -13,14 +13,12 @@ public class LoginActions {
         Pages.loginPage().setPassword(password);
         Pages.loginPage().clickLoginButton();
         Pages.navigationPage().waitForUserMenu();
-        Assert.assertEquals(Pages.navigationPage().getHeaderText(), "Adamtms Jacksonniqjj");
     }
 
     @Step("Logout")
     public void doLogout() {
         Pages.navigationPage().hoverOverUserMenu();
         Pages.navigationPage().clickLogoutButton();
-        Assert.assertTrue(Pages.loginPage().isLoginFormVisible(),
-                "The login form is not visible");
+        Pages.loginPage().waitForLoginForm();
     }
 }

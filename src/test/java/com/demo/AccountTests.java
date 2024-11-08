@@ -17,30 +17,38 @@ import static com.demo.utils.Constants.*;
 @Owner("QA Bohomazov Dmytro")
 public class AccountTests extends BaseTest {
 
+    @Test(description = "Login/Logout test")
+    public void loginTest() {
+        Actions.loginActions().doLogin(LOGIN, PASSWORD);
+        Assert.assertEquals(Pages.navigationPage().getHeaderText(), "Adamtms Jacksonniqjj");
+
+        Actions.loginActions().doLogout();
+        Assert.assertTrue(Pages.loginPage().isLoginFormVisible(), "The login form is not visible");
+    }
+
     @Test(description = "Get last transaction")
-    public void firstTest() {
+    public void getLastTransactionTest() {
         Transaction transactionToCompare = new Transaction(300, 300, "Deposit", "11/01/2024", "Salary and wages");
         Actions.loginActions().doLogin(LOGIN, PASSWORD);
+
         Pages.homePage().clickOnFirstAccount();
         Pages.accountPage().waitForSearchButton();
 
-        Assert.assertEquals(Pages.accountPage().getLastTransaction(), transactionToCompare, "Transaction should be the same");
+        Transaction found = Actions.accountActions().getLastTransaction();
+
+        Assert.assertEquals(found, transactionToCompare, "Transaction should be the same");
         Actions.loginActions().doLogout();
     }
 
     @Test(description = "Advanced search past days")
-    public void secondTest() {
+    public void thirdTest() {
         Actions.loginActions().doLogin(LOGIN, PASSWORD);
         Pages.homePage().clickOnFirstAccount();
 
-        Pages.accountPage().waitForSearchButton();
-        Pages.accountPage().clickSearchButtonShow();
-        Pages.accountPage().setPastDaysFromToday(7);
-        Pages.accountPage().clickSearchButton();
+        Actions.accountActions().searchTransactionsPastDays(7);
 
-        Assert.assertNotNull(Pages.accountPage().getLastTransaction(), "Not found transactions");
+        Assert.assertNotNull(Actions.accountActions().getLastTransaction(), "Not found transactions");
         Pages.accountPage().scrollUp();
         Actions.loginActions().doLogout();
     }
-
 }

@@ -6,7 +6,7 @@ import org.openqa.selenium.By;
 
 public class HomePage extends PageTools {
 
-    private final By accountFirstField = By.xpath("//tr[@data-id='190490384']/td[@data-column-id='column1']");
+    private final By accountFirstField = By.xpath("//td[@data-column-id='column1']");
 
     @Step("Open account detailed page")
     public void clickOnFirstAccount() {
