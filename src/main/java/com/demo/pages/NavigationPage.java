@@ -28,10 +28,5 @@ public class NavigationPage extends PageTools {
         scrollToElement(userMenu);
         click(logoutButton);
         click(logoutButtonOk);
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
     }
 }
