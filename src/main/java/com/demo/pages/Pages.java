@@ -9,7 +9,7 @@ public class Pages extends AllureLogger {
     private static LoginPage loginPage;
     private static NavigationPage navigationPage;
     private static HomePage homePage;
-    private static SearchPage searchPage;
+    private static AccountPage accountPage;
 
     /**
      * This function return an instance of `NavigationPage`
@@ -35,10 +35,10 @@ public class Pages extends AllureLogger {
         return homePage;
     }
 
-    public static SearchPage searchPage() {
-        if (searchPage == null) {
-            searchPage = new SearchPage();
+    public static AccountPage accountPage() {
+        if (accountPage == null) {
+            accountPage = new AccountPage();
         }
-        return searchPage;
+        return accountPage;
     }
 }
