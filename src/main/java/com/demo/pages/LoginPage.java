@@ -5,10 +5,10 @@ import org.openqa.selenium.By;
 
 public class LoginPage extends PageTools {
 
-    private final By logInButton = By.xpath("//button[contains(text(), 'some text')]");
-    private final By loginForm = By.xpath("//form[contains(@onsubmit, 'some text')]");
-    private final By usernameField = By.xpath("//input[@name='some text']");
-    private final By passwordField = By.xpath("//input[@name='some text']");
+    private final By logInButton = By.xpath("//button[@class='MuiButton-root MuiButton-variantSolid MuiButton-colorPrimary MuiButton-sizeMd styles_authSolidButton__grj_G css-yx8c15']");
+    private final By loginForm = By.xpath("//div[@class='MuiCard-root MuiCard-vertical MuiCard-variantPlain MuiCard-colorNeutral MuiCard-sizeMd styles_loginCard___aTcy css-11ib4gw']");
+    private final By usernameField = By.xpath("//input[@class='MuiInput-input css-1u0jcuo']");
+    private final By passwordField = By.xpath("//input[@class='MuiInput-input css-fqt4w4']");
 
     public void clickLoginButton() {
         click(logInButton);
