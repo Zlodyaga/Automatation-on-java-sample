@@ -1,6 +1,7 @@
 package com.demo.pages;
 
 import com.demo.core.base.PageTools;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
 public class LoginPage extends PageTools {
@@ -26,6 +27,7 @@ public class LoginPage extends PageTools {
         waitForElementVisibility(loginForm);
     }
 
+    @Step("Check for visibility of login form")
     public boolean isLoginFormVisible() {
         return isElementVisible(loginForm);
     }
