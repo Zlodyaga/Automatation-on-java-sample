@@ -41,3 +41,4 @@ build/
 /__MACOSX/
 /.idea/
 /.allure/
+/logs/

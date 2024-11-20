@@ -15,7 +15,7 @@ public class TransferMoneyPage extends PageTools {
     private final By continueButton = By.xpath("//div[@data-container-id='Buttons']/div[@data-field-id='continueButton']//button[@type='button']");
     private final By transferHistoryButton = By.xpath("//a[@aria-label='Transfer History']/..");
 
-    private final String lastTransfer = "//table[@class='xwidget_grid_table display']/tbody/tr[1]";
+    private final String lastTransfer = "(//table[@class='xwidget_grid_table display']/tbody/tr[not(contains(@class, 'xwidget_grid_details_row'))])[3]";
     private final By lastTransferAmount = By.xpath(lastTransfer + "//td[@data-column-id='amount']/span");
     private final By lastTransferNotes = By.xpath(lastTransfer + "//td[@data-column-id='notes']");
     private final By lastTransferDate = By.xpath(lastTransfer + "//td[@data-column-id='effectivedate']/span");
